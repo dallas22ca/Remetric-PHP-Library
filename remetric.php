@@ -10,7 +10,7 @@ $r = new Remetric("IPvBEuGI9Znf3245Z0cjIi6yvsIgTpXUizh8qVlmB5n4oO8N");
 
 Simply ping an event to Remetric:
 
-  echo $r->track( array( 
+  $json_response = $r->track( array( 
     "description" => "This is the description of {{ what }}.", 
     "what" => "awesome moment",
     "remetric_created_at" => 1391130336,
@@ -34,7 +34,7 @@ Use an 1x1 blank gif image tag:
 
 Generate a redirect link:
 
-  echo $r->redirect( array( 
+  $link = $r->redirect( array( 
     "description" => "This is the description of {{ what }}.", 
     "what" => "awesome moment",
     "remetric_created_at" => 1391130336,
@@ -83,7 +83,7 @@ class Remetric {
     $base64 = Remetric::to_base64($data);
     $src = "$remetric_domain/events/img/$base64";
     $img = "<img src=\"$src\" style=\"display: none; \">";
-    return $src;
+    return $img;
   }
   
   public static function redirect($data) {
