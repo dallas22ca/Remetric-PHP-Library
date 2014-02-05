@@ -6,11 +6,11 @@ Track your users events via Remetric.com.
 
 Example usage:
 
-$r = Remetric::init("IPvBEuGI9Znf3245Z0cjIi6yvsIgTpXUizh8qVlmB5n4oO8N");
+$r = new Remetric("IPvBEuGI9Znf3245Z0cjIi6yvsIgTpXUizh8qVlmB5n4oO8N");
 
 Simply ping an event to Remetric:
 
-  echo $r::track( array( 
+  echo $r->track( array( 
     "description" => "This is the description of {{ what }}.", 
     "what" => "awesome moment",
     "remetric_created_at" => 1391130336,
@@ -22,7 +22,7 @@ Simply ping an event to Remetric:
 
 Use an 1x1 blank gif image tag:
 
-  echo $r::img( array( 
+  echo $r->img( array( 
     "description" => "This is the description of {{ what }}.", 
     "what" => "awesome moment",
     "remetric_created_at" => 1391130336,
@@ -34,7 +34,7 @@ Use an 1x1 blank gif image tag:
 
 Generate a redirect link:
 
-  echo $r::redirect( array( 
+  echo $r->redirect( array( 
     "description" => "This is the description of {{ what }}.", 
     "what" => "awesome moment",
     "remetric_created_at" => 1391130336,
@@ -49,15 +49,12 @@ Generate a redirect link:
 class Remetric {
   public static $remetric_instance;
   
-  public static function init($api_key, $sandbox = false) {
+  public function __construct($api_key, $sandbox = false) {
     global $remetric_domain;
     global $remetric_api_key;
     $remetric_api_key = $api_key;
     $remetric_domain = "https://secure.remetric.com";
     if ($sandbox) { $remetric_domain = "http://localhost:3000"; }
-      
-    if ( is_null( self::$remetric_instance ) ) { self::$remetric_instance = new Remetric(); }
-    return self::$remetric_instance;
   }
   
   public static function track($data) {
