@@ -105,11 +105,4 @@ class Remetric {
   }
 }
 
-$r = Remetric::init("VOTLf12Xko7afb1tnxBiZWMgU8AI3NjLIC8ZM5hV97eHf8");
-echo $r::track( array( 
-  "description" => "Purchased {{ purchase }}.", 
-  "purchase" => "Lively Chat Support " . $_POST["custom"] . " Addon",
-  "contact" => $subscriber
-) );
-
 ?>
