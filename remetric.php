@@ -53,7 +53,7 @@ class Remetric {
     global $remetric_domain;
     global $remetric_api_key;
     $remetric_api_key = $api_key;
-    $remetric_domain = "http://www.remetric.com";
+    $remetric_domain = "https://secure.remetric.com";
     if ($sandbox) { $remetric_domain = "http://localhost:3000"; }
       
     if ( is_null( self::$remetric_instance ) ) { self::$remetric_instance = new Remetric(); }
@@ -104,5 +104,12 @@ class Remetric {
     return base64_encode(json_encode($data));
   }
 }
+
+$r = Remetric::init("VOTLf12Xko7afb1tnxBiZWMgU8AI3NjLIC8ZM5hV97eHf8");
+echo $r::track( array( 
+  "description" => "Purchased {{ purchase }}.", 
+  "purchase" => "Lively Chat Support " . $_POST["custom"] . " Addon",
+  "contact" => $subscriber
+) );
 
 ?>
