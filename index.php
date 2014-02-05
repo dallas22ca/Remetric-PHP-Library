@@ -1,5 +1,24 @@
 <?php 
 
+/*
+
+Track your users events via Remetric.com.
+
+Example usage:
+
+$r = Remetric::init("IPvBEuGI9Znf3245Z0cjIi6yvsIgTpXUizh8qVlmB5n4oO8N", true);
+echo $r::track( array( 
+  "description" => "This is the description of {{ what }}.", 
+  "what" => "awesome moment",
+  "remetric_created_at" => 1391130336,
+  "contact" => array( 
+    "awesome" => 1, 
+    "key" => "dallas" 
+  ) 
+) );
+
+*/
+
 class Remetric {
   public static $remetric_instance;
   
@@ -58,16 +77,5 @@ class Remetric {
     return base64_encode(json_encode($data));
   }
 }
-
-$r = Remetric::init("IPvBEuGI9Znf3245Z0cjIi6yvsIgTpXUizh8qVlmB5n4oO8N", true);
-echo $r::track( array( 
-  "description" => "This is the description of {{ what }}.", 
-  "what" => "awesome moment",
-  "remetric_created_at" => 1391130336,
-  "contact" => array( 
-    "awesome" => 1, 
-    "key" => "perfectemundo" 
-  ) 
-) );
 
 ?>
